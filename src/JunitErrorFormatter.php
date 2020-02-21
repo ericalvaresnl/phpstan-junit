@@ -36,6 +36,7 @@ class JunitErrorFormatter implements ErrorFormatter
         $testsuite->setAttribute('failures', (string) $analysisResult->getTotalErrorsCount());
         $testsuite->setAttribute('name', 'phpstan');
         $testsuite->setAttribute('tests', (string) $analysisResult->getTotalErrorsCount());
+        $testsuite->setAttribute('timestamp', (new \DateTime('now', new \DateTimeZone('UTC')))->format(\DateTime::ISO8601));
         $testsuite->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
         $testsuite->setAttribute('xsi:noNamespaceSchemaLocation', 'https://raw.githubusercontent.com/junit-team/junit5/r5.5.1/platform-tests/src/test/resources/jenkins-junit.xsd');
         $dom->appendChild($testsuite);
